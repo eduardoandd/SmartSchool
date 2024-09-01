@@ -1,17 +1,27 @@
-<app-titulo [titulo]="titulo"></app-titulo>
-<table class="table table-borderless table-dark table-striped table-lg">
-    <thead class="bg-success">
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Disciplina</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let professor of professores">
-            <th scope="row">{{professor.id}}</th>
-            <td>{{professor.nome}}</td>
-            <td>{{professor.disciplina}}</td>
-        </tr>
-    </tbody>
-</table>
+
+
+<div *ngIf="professorSelecionado">
+    <app-titulo [titulo]="'Professor:' + professorSelecionado"></app-titulo>
+    <br>
+    <button class="btn btn-default" (click)="Voltar()">Voltar</button>
+</div>
+<div *ngIf="!professorSelecionado">
+    <app-titulo [titulo]="titulo"></app-titulo>
+    <table class="table table-borderless table-dark table-striped table-lg table-hover">
+        <thead class="bg-success">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Disciplina</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let professor of professores" style="cursor: pointer;" (click)="professorSelect(professor)">
+                <th scope="row">{{professor.id}}</th>
+                <td>{{professor.nome}}</td>
+                <td>{{professor.disciplina}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
