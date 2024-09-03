@@ -2,24 +2,24 @@
 <div *ngIf="alunoSelecionado">
     <div class="row">
         <div class="mr-auto">
-            <app-titulo [titulo]="'Aluno:' + alunoSelecionado"></app-titulo>
+            <app-titulo [titulo]="'Aluno:' + alunoSelecionado.nome"></app-titulo>
         </div>
         <div class="mt-1">
-            <button class="btn btn-warning" (click)="Voltar()">Lista de alunos</button>
+            <button class="btn btn-warning" (click)="Voltar()">Voltar</button>
         </div>
     </div>
     <form>
         <div class="form-group">
           <label for="formGroupExampleInput">Nome</label>
-          <input type="text" class="form-control">
+          <input type="text" value="{{alunoSelecionado.nome}}" class="form-control">
         </div>
         <div class="form-group">
           <label for="formGroupExampleInput2">Sobrenome</label>
-          <input type="text" class="form-control">
+          <input type="text" value="{{alunoSelecionado.sobrenome}}" class="form-control">
         </div>
         <div class="form-group">
             <label for="formGroupExampleInput2">Telefone</label>
-            <input type="text" class="form-control">
+            <input type="text" value="{{alunoSelecionado.telefone}}" class="form-control">
           </div>
     </form>
 </div>

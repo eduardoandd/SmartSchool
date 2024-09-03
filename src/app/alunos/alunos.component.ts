@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Aluno } from '../models/aluno';
 
 @Component({
   selector: 'app-alunos',
@@ -14,19 +15,19 @@ export class AlunosComponent implements OnInit {
     {id:3,nome:'Gabriel', sobrenome:'Marcos',telefone:'33223445'},
     {id:4,nome:'Ana', sobrenome:'Alvares',telefone:'33221325'},
   ];
-  alunoSelecionado:string=''
+  alunoSelecionado?:Aluno
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  AlunoSelect(aluno:any){
-    this.alunoSelecionado=aluno.nome
+  AlunoSelect(aluno:Aluno){
+    this.alunoSelecionado=aluno
   }
 
   Voltar(){
-    this.alunoSelecionado=''
+    this.alunoSelecionado=undefined
   }
 
 }
