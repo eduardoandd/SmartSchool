@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Aluno } from '../models/aluno';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BsModalRef,BsModalService } from 'ngx-bootstrap/modal';
 
 
 @Component({
@@ -9,7 +10,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./alunos.component.css']
 })
 export class AlunosComponent implements OnInit {
-
+  
+  public modalRef?: BsModalRef;
   public titulo='Alunos'
   public alunoSelecionado?:Aluno
   public alunoForm!: FormGroup
@@ -21,7 +23,7 @@ export class AlunosComponent implements OnInit {
   ];
   
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder,private modalService: BsModalService) { 
     this.criaForm()
   }
 
@@ -48,6 +50,10 @@ export class AlunosComponent implements OnInit {
 
   Voltar(){
     this.alunoSelecionado=undefined
+  }
+
+  openModal(template: TemplateRef<void>) {
+    this.modalRef = this.modalService.show(template);
   }
 
 }
