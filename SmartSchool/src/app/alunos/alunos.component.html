@@ -43,7 +43,7 @@
             <tbody>
                 <tr *ngFor="let aluno of alunos">
                     <td>
-                        <button class="btn btn-outline-warning" (click)="AlunoSelect(aluno)">Detalhes</button>
+                        <button class="text-white btn btn-outline-warning" (click)="AlunoSelect(aluno)">Detalhes</button>
                     </td>
                     <td scope="row">{{aluno.id}}</td>
                     <td>{{aluno.nome}}</td>
@@ -52,7 +52,7 @@
                     <td>
                         <div class="btn-group">
                             <button class="btn btn-success" (click)="openModal(template)">Professores</button>
-                            <button class="btn btn-outline-danger ml-2">Excluir</button>
+                            <button class="btn btn-danger ml-2">Excluir</button>
                         </div>
                     </td>
                 </tr>
