@@ -8,7 +8,7 @@ namespace SmartSchool_API.Models
     public class Disciplina
     {
         public Disciplina(){}
-        public Disciplina(int id, int professorId,string nome) 
+        public Disciplina(int id,string nome,int professorId) 
         {
             this.Id = id;
             this.Nome=nome;
