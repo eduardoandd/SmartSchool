@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MqQas9suGcuxoefuaUZR08PIuoK1Rvy4vb7NCcbQpzoiEqzvxi5ClY+MNr8GnvdeMyytfPWaP1vD3oEIeamRZQ==",
+  "dgSpecHash": "DlD4DfW1YZ9SKE0FVoUBZbY8U1LNm0PPCUGVoYwG+G7LR3xujp+l1PVrjC7dU3JFDqns7r9XYCqznfg7wGEwcg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\edubo\\Desktop\\Angular\\SmartSchool-API\\SmartSchool-API.csproj",
+  "projectFilePath": "c:\\Users\\edubo\\Desktop\\Angular\\SmartSchool-API\\SmartSchool-API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\edubo\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.2\\microsoft.aspnetcore.jsonpatch.3.1.2.nupkg.sha512",
     "C:\\Users\\edubo\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.2\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.2.nupkg.sha512",
