@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\edubo\\Desktop\\Angular\\SmartSchool-API\\SmartSchool-API.csproj": {}
+    "C:\\Users\\edubo\\Desktop\\Angular\\SmartSchool-API\\SmartSchool-API.csproj": {}
   },
   "projects": {
-    "c:\\Users\\edubo\\Desktop\\Angular\\SmartSchool-API\\SmartSchool-API.csproj": {
+    "C:\\Users\\edubo\\Desktop\\Angular\\SmartSchool-API\\SmartSchool-API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\edubo\\Desktop\\Angular\\SmartSchool-API\\SmartSchool-API.csproj",
+        "projectUniqueName": "C:\\Users\\edubo\\Desktop\\Angular\\SmartSchool-API\\SmartSchool-API.csproj",
         "projectName": "SmartSchool-API",
-        "projectPath": "c:\\Users\\edubo\\Desktop\\Angular\\SmartSchool-API\\SmartSchool-API.csproj",
+        "projectPath": "C:\\Users\\edubo\\Desktop\\Angular\\SmartSchool-API\\SmartSchool-API.csproj",
         "packagesPath": "C:\\Users\\edubo\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\edubo\\Desktop\\Angular\\SmartSchool-API\\obj\\",
+        "outputPath": "C:\\Users\\edubo\\Desktop\\Angular\\SmartSchool-API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

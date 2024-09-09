@@ -45,7 +45,7 @@ namespace SmartSchool_API.Controllers
             }
         }
 
-        [HttpGet("ByAluno/{professorId}")]
+        [HttpGet("ByAlunoId/{professorId}")]
         public async Task<IActionResult> GetProfessorByAlunoId(int professorId){
             try
             {

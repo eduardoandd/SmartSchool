@@ -55,7 +55,7 @@ namespace SmartSchool_API.Controllers
         public async Task<IActionResult> GetDisciplinaById(int disciplinaId){
             try
             {
-                var result= await _repo.GetAlunosAsyncByDisciplinaId(disciplinaId,false);
+                var result= await _repo.GetAlunosAsyncByDisciplinaId(disciplinaId,true);
                 return Ok(result);
             }
             catch (System.Exception ex)
