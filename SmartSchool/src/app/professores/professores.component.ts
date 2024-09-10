@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Professor } from '../models/professor';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ProfessorService } from '../services/professor.service';
 
 @Component({
   selector: 'app-professores',
@@ -14,19 +15,15 @@ export class ProfessoresComponent implements OnInit {
   public professorSelecionado?:Professor
   public texto:string=''
   public professoresForm!:FormGroup
-  public professores= [
-    {id:1,nome:'Marcos',disciplina:'Matemática'},
-    {id:2,nome:'Antonio',disciplina:'Fisíca'},
-    {id:3,nome:'Bianca',disciplina:'Geografia'},
-    {id:4,nome:'Paulo',disciplina:'Filosofia'},
-  ]
+  public professores!:Professor[]
 
   
-  constructor(private fb:FormBuilder,private modalService: BsModalService) { 
+  constructor(private fb:FormBuilder,private modalService: BsModalService, private professorService:ProfessorService) { 
     this.criaForm()
   }
 
   ngOnInit(): void {
+    this.carregarProfessores()
   }
 
   openModal(template: TemplateRef<void>) {
@@ -35,13 +32,30 @@ export class ProfessoresComponent implements OnInit {
 
   criaForm(){
     this.professoresForm=this.fb.group({
+      id:[''],
       nome:['', Validators.required],
       disciplina:['', Validators.required]
     })
   }
 
+  carregarProfessores(){
+    this.professorService.getAll().subscribe(
+      (professores:Professor[]) => {console.log(professores),this.professores=professores},
+      (erro:any) => {console.log(erro);
+      }
+    )
+  }
+ 
+  salvaProfessor(professor:Professor){
+    this.professorService.put(professor.id,professor).subscribe(
+      (model:Professor) => {console.log(model), this.carregarProfessores();},
+      (erro:any) => {console.log(erro);
+      }
+    )
+  }
+
   professorSubmit(){
-    console.log(this.professoresForm.value);
+    this.salvaProfessor(this.professoresForm.value)
   }
 
   professorSelect(professor:Professor){

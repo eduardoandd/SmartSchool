@@ -27,6 +27,16 @@ export class AlunosComponent implements OnInit {
     this.carregarAlunos();
   }
 
+  criaForm(){
+    this.alunoForm=this.fb.group({
+      id:['', Validators.required],
+      nome: ['', Validators.required],
+      sobrenome: ['',Validators.required],
+      telefone: ['',Validators.required]
+    })
+  }
+
+
   carregarAlunos(){
     this.alunoService.getAll().subscribe(
       (alunos: Aluno[]) => {this.alunos = alunos},
@@ -34,18 +44,17 @@ export class AlunosComponent implements OnInit {
       }
     );
   }
-
-  criaForm(){
-    this.alunoForm=this.fb.group({
-      nome: ['', Validators.required],
-      sobrenome: ['',Validators.required],
-      telefone: ['',Validators.required]
-    })
+  
+  salvarAluno(aluno:Aluno){
+    this.alunoService.put(aluno.id,aluno).subscribe(
+      (model:Aluno) =>{console.log(model); this.carregarAlunos();},
+      (erro:any) => {console.log(erro);
+      }
+    );  
   }
 
   alunoSubmit(){
-    console.log(this.alunoForm.value);
-    
+    this.salvarAluno(this.alunoForm.value)
   }
 
   AlunoSelect(aluno:Aluno){

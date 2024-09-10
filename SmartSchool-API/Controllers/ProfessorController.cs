@@ -76,22 +76,25 @@ namespace SmartSchool_API.Controllers
         }
 
         [HttpPut("{professorId}")]
-        public async Task<IActionResult> Put(int professorId,Professor model){
+        public async Task<IActionResult> put(int professorId, Professor model)
+        {
             try
             {
-                var professor = await _repo.GetProfessorAsyncById(professorId,false);
-                if (professor == null) return NotFound("Professor não encontrado");
+                var Professor = await _repo.GetProfessorAsyncById(professorId, false);
+                if(Professor == null) return NotFound();
 
                 _repo.Update(model);
 
-                if(await _repo.SaveChangesAsync()){
+                if(await _repo.SaveChangesAsync())
+                {
                     return Ok(model);
-                }
+                }                
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                return BadRequest($"Erro {ex.Message}");
+                return BadRequest($"Erro: {ex.Message}");
             }
+
             return BadRequest();
         }
 
