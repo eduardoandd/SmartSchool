@@ -17,6 +17,7 @@ export class AlunosComponent implements OnInit {
   public alunoSelecionado?:Aluno
   public alunoForm!: FormGroup
   public alunos!: Aluno[];
+  public modo:string = 'post'
   
 
   constructor(private fb: FormBuilder,private modalService: BsModalService, private alunoService:AlunoService) { 
@@ -46,11 +47,22 @@ export class AlunosComponent implements OnInit {
   }
   
   salvarAluno(aluno:Aluno){
-    this.alunoService.put(aluno.id,aluno).subscribe(
-      (model:Aluno) =>{console.log(model); this.carregarAlunos();},
-      (erro:any) => {console.log(erro);
-      }
-    );  
+
+    if (aluno.id != 0){
+      this.alunoService.put(aluno).subscribe(
+        (model:Aluno) =>{console.log(model); this.carregarAlunos();},
+        (erro:any) => {console.log(erro);
+        }
+      );
+    }
+    else{
+      this.alunoService.post(aluno).subscribe(
+        (model:Aluno) =>{console.log(model); this.carregarAlunos();},
+        (erro:any) => {console.log(erro);
+        }
+      );
+    }
+
   }
 
   alunoSubmit(){
@@ -62,6 +74,11 @@ export class AlunosComponent implements OnInit {
     this.alunoForm.patchValue(aluno)
   }
 
+  newAluno(){
+    this.alunoSelecionado = new Aluno()
+    this.alunoForm.patchValue(this.alunoSelecionado)
+  }
+
   Voltar(){
     this.alunoSelecionado=undefined
   }
@@ -69,5 +86,7 @@ export class AlunosComponent implements OnInit {
   openModal(template: TemplateRef<void>) {
     this.modalRef = this.modalService.show(template);
   }
+
+ 
 
 }

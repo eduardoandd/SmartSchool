@@ -62,6 +62,12 @@ export class ProfessoresComponent implements OnInit {
     this.professorSelecionado=professor
     this.professoresForm.patchValue(professor)
   }
+
+  newProfessor(){
+    this.professorSelecionado = new Professor()
+    this.professoresForm.patchValue(this.professorSelecionado)
+  }
+
   Voltar(){
     this.professorSelecionado=undefined
   }

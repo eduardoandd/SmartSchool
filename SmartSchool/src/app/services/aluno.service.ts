@@ -21,12 +21,12 @@ export class AlunoService {
     return this.http.get<Aluno>(`${this.URL}/${id}`);
   }
 
-  post(alunio:Aluno){
-    return this.http.post(`${this.URL}`,Aluno)
+  post(aluno:Aluno): Observable<Aluno>{
+    return this.http.post<Aluno>(`${this.URL}`,aluno)
   }
 
-  put(id:number, aluno:Aluno): Observable<Aluno>{
-    return this.http.put<Aluno>(`${this.URL}/${id}`,aluno)
+  put(aluno:Aluno): Observable<Aluno>{
+    return this.http.put<Aluno>(`${this.URL}/${aluno.id}`,aluno)
   }
 
   delete(id:number): Observable<Aluno>{

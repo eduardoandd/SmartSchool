@@ -1,13 +1,8 @@
 <div class="row">
     <div class="col-sm-6" *ngIf="alunoSelecionado">
-        <div class="row">
-            <div class="mr-auto">
-                <app-titulo [titulo]="'Cód:' + alunoSelecionado.id"></app-titulo>
-            </div>
-            <div class="mt-1">
-                <button class="btn btn-outline-danger" (click)="Voltar()">Fechar</button>
-            </div>
-        </div>
+        <app-titulo [titulo]="'' + (alunoSelecionado.id === 0 ? 'Novo aluno:' : 'Cód.' + alunoSelecionado.id)">
+            <button class="btn  btn-warning" (click)="Voltar()">Voltar</button>
+        </app-titulo>
 
         <form [formGroup]="alunoForm" (submit)="alunoSubmit()">
             <div class="form-group">
@@ -28,7 +23,9 @@
         </form>
     </div>
     <div [ngClass]="{'col-sm-6':alunoSelecionado, 'col-sm-12':!alunoSelecionado}">
-        <app-titulo [titulo]="titulo"></app-titulo>
+        <app-titulo [titulo]="titulo">
+            <button class="btn btn-success" (click)="newAluno()">Cadastrar</button>
+        </app-titulo>
         <table class="table table-borderless table-dark table-striped table-lg table-hover">
             <thead class="bg-success">
                 <tr>
