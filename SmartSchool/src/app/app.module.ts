@@ -13,7 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ModalModule} from 'ngx-bootstrap/modal'
-import { HttpClientModule} from '@angular/common/http'
+import { HttpClientModule} from '@angular/common/http';
+import { TabelaAlunoComponent } from './tabela-aluno/tabela-aluno.component';
+import { TabelaProfessoresComponent } from './tabela-professores/tabela-professores.component'
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { HttpClientModule} from '@angular/common/http'
     PerfilComponent,
     DashboardComponent,
     NavComponent,
-    TituloComponent
+    TituloComponent,
+    TabelaAlunoComponent,
+    TabelaProfessoresComponent
   ],
   imports: [
     BrowserModule,
