@@ -29,7 +29,7 @@ export class AlunoService {
     return this.http.put<Aluno>(`${this.URL}/${aluno.id}`,aluno)
   }
 
-  delete(id:number): Observable<Aluno>{
-    return this.http.delete<Aluno>(`${this.URL}/${id}`);
+  delete(aluno:Aluno): Observable<Aluno>{
+    return this.http.delete<Aluno>(`${this.URL}/${aluno.id}`);
   }
 }

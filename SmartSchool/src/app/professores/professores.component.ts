@@ -47,13 +47,30 @@ export class ProfessoresComponent implements OnInit {
   }
  
   salvaProfessor(professor:Professor){
-    this.professorService.put(professor.id,professor).subscribe(
-      (model:Professor) => {console.log(model), this.carregarProfessores();},
-      (erro:any) => {console.log(erro);
-      }
-    )
+
+    if (professor.id === 0){
+      this.professorService.post(professor).subscribe(
+        (model:Professor) => {console.log(model), this.carregarProfessores();},
+        (erro:any) => {console.log(erro);
+        }
+      )
+    }
+    else{
+      this.professorService.put(professor).subscribe(
+        (model:Professor) => {console.log(model), this.carregarProfessores();},
+        (erro:any) => {console.log(erro);
+        }
+      )
+    }
   }
 
+  deleteProfessor(professor:Professor){
+    this.professorService.delete(professor).subscribe(
+      (model:Professor) => {console.log(model), this.carregarProfessores();},
+      (erro:any) => {console.log(erro); this.carregarProfessores()}
+    )
+  }
+    
   professorSubmit(){
     this.salvaProfessor(this.professoresForm.value)
   }
@@ -67,6 +84,8 @@ export class ProfessoresComponent implements OnInit {
     this.professorSelecionado = new Professor()
     this.professoresForm.patchValue(this.professorSelecionado)
   }
+
+  
 
   Voltar(){
     this.professorSelecionado=undefined

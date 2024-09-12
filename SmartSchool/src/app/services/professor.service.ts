@@ -18,7 +18,16 @@ export class ProfessorService {
     return this.http.get<Professor[]>(`${this.URL}`)
   }
 
-  put(id:number, professor:Professor): Observable<Professor>{
-    return this.http.put<Professor>(`${this.URL}/${id}`, professor)
+  put(professor:Professor): Observable<Professor>{
+    return this.http.put<Professor>(`${this.URL}/${professor.id}`, professor)
   }
+
+  delete(professor:Professor): Observable<Professor>{
+    return this.http.delete<Professor>(`${this.URL}/${professor.id}`)
+  }
+
+  post(professor:Professor): Observable<Professor>{
+    return this.http.post<Professor>(`${this.URL}`, professor)
+  }
+
 }

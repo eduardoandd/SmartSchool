@@ -5,6 +5,7 @@ import { BsModalRef,BsModalService } from 'ngx-bootstrap/modal';
 import { AlunoService } from '../services/aluno.service';
 
 
+
 @Component({
   selector: 'app-alunos',
   templateUrl: './alunos.component.html',
@@ -63,6 +64,14 @@ export class AlunosComponent implements OnInit {
       );
     }
 
+  }
+
+  deleteAluno(aluno:Aluno){
+    this.alunoService.delete(aluno).subscribe(
+      (model:Aluno) => {console.log(model); this.carregarAlunos();},
+      (erro:any) => {console.log(erro);}
+    )
+    
   }
 
   alunoSubmit(){

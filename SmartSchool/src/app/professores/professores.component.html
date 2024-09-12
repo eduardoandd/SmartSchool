@@ -1,8 +1,9 @@
 <div class="row">
-    <div class="col-sm-12" *ngIf="professorSelecionado">
-        <app-titulo [titulo]="'Cod:' + professorSelecionado.id">
+    <div class="col-sm-6" *ngIf="professorSelecionado">
+        <app-titulo [titulo]="'' + (professorSelecionado.id === 0 ? 'Novo Professor' : 'Cód.' + professorSelecionado.id)">
             <button class="btn  btn-warning" (click)="Voltar()">Voltar</button>
         </app-titulo>
+        
         <form [formGroup]="professoresForm" (submit)="professorSubmit()">
             <div class="form-group">
               <label for="formGroupExampleInput">Nome</label>
@@ -18,7 +19,7 @@
         </form>
     </div>
 
-    <div class="col-sm-12" *ngIf="!professorSelecionado" >
+    <div [ngClass]="{'col-sm-6':professorSelecionado, 'col-sm-12':!professorSelecionado}">
         <app-titulo [titulo]=titulo>
             <button class="btn btn-success" (click)="newProfessor()">
                 Cadastrar
@@ -45,7 +46,7 @@
                     <td>
                         <div class="btn-group">
                             <button (click)="openModal(template)" class="btn btn btn-success">Alunos</button>
-                            <button class="btn btn btn-danger ml-2">Excluir</button>
+                            <button class="btn btn btn-danger ml-2" (click)="deleteProfessor(professor)">Excluir</button>
                         </div>
                     </td>
                 </tr>

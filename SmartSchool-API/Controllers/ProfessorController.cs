@@ -108,7 +108,7 @@ namespace SmartSchool_API.Controllers
                 _repo.Delete(professor);
 
                 if(await _repo.SaveChangesAsync()){
-                    return Ok($"{professor.Nome} deletado com sucesso!");
+                    return Ok(new {message = "Deletado"});
                 }
             }
             catch (System.Exception ex)
