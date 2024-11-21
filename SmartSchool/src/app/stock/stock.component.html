@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-sm-6" *ngIf="selectedStock">
+        <app-titulo [titulo]="'' + (selectedStock.id === 0 ? 'Novo Cliente:' : 'Cód.' + selectedStock.id)">
+            <button class="btn  btn-warning" (click)="voltar()">Voltar</button>
+        </app-titulo>
+
+        <form [formGroup]="stockForm" (submit)="stockSubmit()">
+            <div class="form-group">
+              <label for="formGroupExampleInput">Item:</label>
+              <input type="text" formControlName="item"  class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput2">Quantidade:</label>
+              <input type="number" formControlName="quantity"  class="form-control">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" [disabled]="!stockForm.valid">Enviar</button>
+            </div>
+        </form>
+    </div>
+    <div [ngClass]="{'col-sm-6':selectedStock, 'col-sm-12':!selectedStock}">
+        <app-titulo [titulo]="titulo">
+            <button class="btn btn-success" (click)="newStock()">Cadastrar</button>
+        </app-titulo>
+        <table class="table table-borderless table-dark table-striped table-lg table-hover">
+            <thead class="bg-success">
+                <tr>
+                    <th scope="col">Visualizar</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let stock of stocks">
+                    <td>
+                        <button class="text-white btn btn-outline-warning" (click)="stockSelect(stock)">Detalhes</button>
+                    </td>
+                    <td scope="row">{{stock.id}}</td>
+                    <td>{{stock.item}}</td>
+                    <td>{{stock.quantity}}</td>
+                    <td>
+                        <div class="btn-group" style="position: relative; right: 25px;"> 
+                            <button class="btn btn-danger ml-2" (click)="deleteStock(stock)">Excluir</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

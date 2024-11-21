@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col-sm-6" *ngIf="selectedOrder">
+        <app-titulo [titulo]="'' + (selectedOrder.id === 0 ? 'Novo Cliente:' : 'Cód.' + selectedOrder.id)">
+            <button class="btn  btn-warning" (click)="voltar()">Voltar</button>
+        </app-titulo>
+
+            <form [formGroup]="orderForm" (submit)="orderSubmit()">
+                <div class="form-group">
+                  <label for="productSelect">Produto:</label>
+                  <select formControlName="product" class="form-control" id="productSelect" multiple>
+                    <option *ngFor="let prod of products" [value]="prod.id">
+                      {{ prod.Name }}
+                    </option>
+                  </select>
+                </div>
+              
+                <div class="form-group">
+                  <label for="addressStreet">Rua:</label>
+                  <input type="text" formControlName="street" class="form-control" id="addressStreet">
+                </div>
+                <div class="form-group">
+                  <label for="addressStreet">Cidade:</label>
+                  <input type="text" formControlName="city" class="form-control" id="addressStreet">
+                </div>
+              
+                <div class="form-group">
+                  <button class="btn btn-success">Enviar</button>
+                </div>
+              </form>
+    </div>
+    <div [ngClass]="{'col-sm-6':selectedOrder, 'col-sm-12':!selectedOrder}">
+        <app-titulo [titulo]="titulo">
+            <button class="btn btn-success" (click)="newOrder()">Cadastrar</button>
+        </app-titulo>
+        <table class="table table-borderless table-dark table-striped table-lg table-hover">
+            <thead class="bg-success">
+                <tr>
+                    <th scope="col">Visualizar</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Endereço</th>
+                    <th scope="col">Valo total</th>
+                    <th scope="col">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders">
+                    <td>
+                        <button class="text-white btn btn-outline-warning" (click)="orderSelect(order)">Detalhes</button>
+                    </td>
+                    <td scope="row">{{order.id}}</td>
+                    <td>{{order.adress.street}} - {{order.adress.city}}</td>
+                    <td>R$ {{order.total_price}}</td>
+                    <td style="position: relative; right: 25px;">
+                        <div class="btn-group">
+                            <button class="btn btn-danger ml-2" (click)="deleteOrder(order)">Excluir</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ng-template #template>
+    <div class="modal-body">
+      <!-- <app-tabela-professores></app-tabela-professores> -->
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn pull-right" aria-label="Close" (click)="modalRef?.hide()">
+          Fechar
+      </button>
+    </div>
+  </ng-template>
+

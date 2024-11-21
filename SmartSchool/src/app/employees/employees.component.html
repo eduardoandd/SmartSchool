@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-sm-6" *ngIf="selectedEmployee">
+        <app-titulo [titulo]="'' + (selectedEmployee.id === 0 ? 'Novo Cliente:' : 'Cód.' + selectedEmployee.id)">
+            <button class="btn  btn-warning" (click)="voltar()">Voltar</button>
+        </app-titulo>
+
+        <form [formGroup]="customerForm" (submit)="employeesSubmit()">
+            <div class="form-group">
+              <label for="formGroupExampleInput">Nome:</label>
+              <input type="text" formControlName="name"  class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput2">Idade:</label>
+              <input type="number" formControlName="age"  class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Departamento:</label>
+                <input type="text" formControlName="department"  class="form-control">
+              </div>
+            <div class="form-group">
+                <button class="btn btn-success" [disabled]="!customerForm.valid">Enviar</button>
+            </div>
+        </form>
+    </div>
+    <div [ngClass]="{'col-sm-6':selectedEmployee, 'col-sm-12':!selectedEmployee}">
+        <app-titulo [titulo]="titulo">
+            <button class="btn btn-success" (click)="newEmployees()">Cadastrar</button>
+        </app-titulo>
+        <table class="table table-borderless table-dark table-striped table-lg table-hover">
+            <thead class="bg-success">
+                <tr>
+                    <th scope="col">Visualizar</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Idade</th>
+                    <th scope="col">Departamento</th>
+                    <th scope="col">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of employees">
+                    <td>
+                        <button class="text-white btn btn-outline-warning" (click)="employeesSelect(employee)">Detalhes</button>
+                    </td>
+                    <td scope="row">{{employee.id}}</td>
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.age}}</td>
+                    <td>{{employee.department}}</td>
+                    <td>
+                        <div class="btn-group">
+                            <button class="btn btn-danger ml-2" (click)="deleteEmployees(employee)">Excluir</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

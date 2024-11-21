@@ -1,0 +1,15 @@
+<div *ngIf="sales.length > 0; else noData">
+    <ul>
+      <li *ngFor="let sale of sales">
+        <h2>Quantidade total de vendas.{{ sale.order_count }}</h2>
+
+        <p>Essa contagem é referente a quantidade de pedidos.</p>
+        
+      </li>
+    </ul>
+  </div>
+  
+  <ng-template #noData>
+    <p>No sales data available.</p>
+  </ng-template>
+  

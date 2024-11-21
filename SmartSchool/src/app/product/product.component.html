@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-sm-6" *ngIf="selectedProduct">
+        <app-titulo [titulo]="'' + (selectedProduct.id === 0 ? 'Novo Cliente:' : 'Cód.' + selectedProduct.id)">
+            <button class="btn  btn-warning" (click)="voltar()">Voltar</button>
+        </app-titulo>
+
+        <form [formGroup]="productForm" (submit)="productSubmit()">
+            <div class="form-group">
+              <label for="formGroupExampleInput">Nome:</label>
+              <input type="text" formControlName="Name"  class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Preço</label>
+                <input type="number" formControlName="Price"  class="form-control">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" [disabled]="!productForm.valid">Enviar</button>
+            </div>
+        </form>
+    </div>
+    <div [ngClass]="{'col-sm-6':selectedProduct, 'col-sm-12':!selectedProduct}">
+        <app-titulo [titulo]="titulo">
+            <button class="btn btn-success" (click)="newProduct()">Cadastrar</button>
+        </app-titulo>
+        <table class="table table-borderless table-dark table-striped table-lg table-hover">
+            <thead class="bg-success">
+                <tr>
+                    <th scope="col">Visualizar</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <td>
+                        <button class="text-white btn btn-outline-warning" (click)="productSelect(product)">Detalhes</button>
+                    </td>
+                    <td scope="row">{{product.id}}</td>
+                    <td>{{product.Name}}</td>
+                    <td>R$ {{product.Price}}</td>
+                    <td>
+                        <div class="btn-group" style="position: relative; right: 25px;">
+                            <button class="btn btn-danger ml-2" (click)="deleteProduct(product)">Excluir</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ng-template #template>
+    <div class="modal-body">
+      <!-- <app-tabela-professores></app-tabela-professores> -->
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn pull-right" aria-label="Close" (click)="modalRef?.hide()">
+          Fechar
+      </button>
+    </div>
+  </ng-template>
+

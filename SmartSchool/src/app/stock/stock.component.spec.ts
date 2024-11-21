@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TabelaAlunoComponent } from './tabela-aluno.component';
+import { StockComponent } from './stock.component';
 
-describe('TabelaAlunoComponent', () => {
-  let component: TabelaAlunoComponent;
-  let fixture: ComponentFixture<TabelaAlunoComponent>;
+describe('StockComponent', () => {
+  let component: StockComponent;
+  let fixture: ComponentFixture<StockComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TabelaAlunoComponent ]
+      declarations: [ StockComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TabelaAlunoComponent);
+    fixture = TestBed.createComponent(StockComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
